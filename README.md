@@ -1,4 +1,9 @@
 # Electrum Field
+
+[![NPM version](https://img.shields.io/npm/v/electrum-field.svg)](https://www.npmjs.com/package/electrum-field)
+[![Build Status](https://travis-ci.org/epsitec-sa/electrum-field.svg?branch=master)](https://travis-ci.org/epsitec-sa/electrum-field)
+[![Build status](https://ci.appveyor.com/api/projects/status/8c6nooep3fbnoytc?svg=true)](https://ci.appveyor.com/project/epsitec/electrum-field)
+
 The `electrum-field` module handles state associated with form fields and is
 used with `electrum-state`.
 
