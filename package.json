@@ -1,11 +1,10 @@
 {
   "name": "electrum-field",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Electrum Field handles state associated with form fields.",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel -d lib/ src/",
-    "regen": "require-self && electrum-require-components --wrap ./src exp .component.js all-components.js",
     "prepublish": "npm run compile",
     "test": "mocha src/test/**/*.js"
   },
@@ -35,7 +34,6 @@
     "mocha": "^2.3.4",
     "path": "^0.12.7",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "require-self": "^0.1.0"
+    "react-dom": "^0.14.3"
   }
 }
