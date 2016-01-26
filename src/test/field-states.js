@@ -91,15 +91,18 @@ describe ('FieldStates', () => {
   });
 
   describe ('get()', () => {
-    it ('returns copies of the original states', () => {
+    it ('returns an immutable array', () => {
       const fs = FieldStates.from ({x: 'x'}, {y: 'y'});
-      const result1 = fs.get ();
-      // Mutate returned state: this should not affect FieldStates
-      result1[0].x = 'X';
-      const result2 = fs.get ();
-      expect (result1).to.not.equal (result2);
-      expect (result2[0]).to.have.property ('x', 'x');
-      expect (result2[1]).to.have.property ('y', 'y');
+      const result = fs.get ();
+      expect (() => result[0] = {}).to.throw ('Cannot assign to read only property \'0\'');
+      expect (() => result.push ({})).to.throw ('Can\'t add property 2, object is not extensible');
+    });
+
+    it ('returns an immutable array of immutable objects', () => {
+      const fs = FieldStates.from ({x: 'x'}, {y: 'y'});
+      const result = fs.get ();
+      expect (() => result[0].x = 'X').to.throw ('Cannot assign to read only property \'x\'');
+      expect (() => result[0].a = 'A').to.throw ('Can\'t add property a, object is not extensible');
     });
   });
 });

@@ -8,6 +8,11 @@ function clone (array) {
   return array.map (x => Object.assign ({}, x));
 }
 
+function freeze (array) {
+  array.forEach (x => Object.freeze (x));
+  return Object.freeze (array);
+}
+
 /******************************************************************************/
 
 const secretKey = {};
@@ -17,11 +22,11 @@ export default class FieldStates {
     if (key !== secretKey) {
       throw new Error ('Do not call FieldStates constructor directly; use FieldStates.create instead');
     }
-    this._states = states;
+    this._states = freeze (states);
   }
 
   get () {
-    return clone (this._states);
+    return this._states;
   }
 
   find (fingerprint) {
