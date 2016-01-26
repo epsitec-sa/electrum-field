@@ -26,6 +26,21 @@ describe ('FieldStates', () => {
     });
   });
 
+  describe ('find()', () => {
+    it ('retrieves a copy of the first matching state', () => {
+      const state1 = {x: 1};
+      const state2 = {y: 2};
+      const fs = FieldStates.from (state1, state2);
+      expect (fs.find ('x')).to.have.property ('x', 1);
+      expect (fs.find ('y')).to.have.property ('y', 2);
+      expect (fs.find ('x')).to.not.equal (state1);
+      // Make sure the returned object is a copy of the original; the state
+      // behaves as if it were immutable:
+      fs.find ('x').z = 3;
+      expect (fs.find ('x')).to.not.have.property ('z');
+    });
+  });
+
   describe ('add()', () => {
     it ('adds new state', () => {
       const fs1 = FieldStates.create ();
@@ -36,6 +51,16 @@ describe ('FieldStates', () => {
       expect (fs3).to.equal (fs2);
       expect (fs4).to.not.equal (fs3);
       expect (fs4.get ()).to.deep.equal ([{x: 'X'}]);
+      expect (fs4.find ('x')).has.property ('x', 'X');
+    });
+    it ('adds multiple states in one call', () => {
+      const fs1 = FieldStates.create ();
+      const fs2 = fs1.add ({x: 'X'}, {y: 'Y'}, {a: 'A'});
+      const fs3 = fs2.add ({a: 'A'}, {x: 'X'});
+      expect (fs3).to.equal (fs2);
+      expect (fs2.find ('x')).has.property ('x', 'X');
+      expect (fs2.find ('y')).has.property ('y', 'Y');
+      expect (fs2.find ('a')).has.property ('a', 'A');
     });
   });
 

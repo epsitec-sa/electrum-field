@@ -24,12 +24,15 @@ names of the state's properties (property `id` is not included in
 the computation of the fingerprint).
 
 ```javascript
+import {FieldStates} from 'electrum-field';
+
 const state = {
   id: '1234',
   begin: 12,
-  end: 23  
+  end: 23
 };
-expect (fingerprint (state)).to.equal ('begin,end');
+
+expect (FieldStates.fingerprint (state)).to.equal ('begin,end');
 ```
 
 # FieldStates

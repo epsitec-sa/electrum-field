@@ -24,8 +24,21 @@ export default class FieldStates {
     return clone (this._states);
   }
 
+  find (fingerprint) {
+    const match = Utils.findState (this._states, fingerprint);
+    if (match) {
+      return Object.assign ({}, match);
+    }
+  }
+
   add (state) {
-    return this.mutate (Utils.replaceState (this._states, state));
+    if (arguments.length === 0) {
+      return this;
+    } else if (arguments.length === 1) {
+      return this.mutate (Utils.replaceState (this._states, state));
+    } else {
+      return this.mutate (Utils.replaceStates (this._states, ...arguments));
+    }
   }
 
   remove (state) {
@@ -51,10 +64,11 @@ export default class FieldStates {
   static create () {
     return new FieldStates (secretKey, []);
   }
-
-  static fingerprint (state) {
-    return Utils.fingerprint (state);
-  }
 }
+
+/******************************************************************************/
+
+FieldStates.fingerprint = Utils.fingerprint;
+FieldStates.clone = clone;
 
 /******************************************************************************/
