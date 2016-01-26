@@ -1,6 +1,6 @@
 {
   "name": "electrum-field",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Electrum Field handles state associated with form fields.",
   "main": "lib/index.js",
   "scripts": {

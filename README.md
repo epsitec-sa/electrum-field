@@ -5,7 +5,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/8c6nooep3fbnoytc?svg=true)](https://ci.appveyor.com/project/epsitec/electrum-field)
 
 The `electrum-field` module handles state associated with form fields and is
-used with `electrum-state`.
+used by `electrum`.
 
 # Manipulating field states
 
@@ -48,11 +48,13 @@ To create a `FieldStates` instance, use one of the static methods:
 
 To manipulate a `FieldStates` instance:
 
-* `add (state)` &rarr; adds or updates the state based on its fingerprint;
+* `add (state)` &rarr; adds or updates the state based; matching with any
+  existing states is based on the fingerprint.
 * `remove (state)` &rarr; removes the state.
-* `find (state)` &rarr; returns a copy of the state (if it is found) or
-  `null` otherwise.
-* `get ()` &rarr; returns an array with a copy of all the states.
+* `find (state)` &rarr; returns the immutable state (if it is found) or
+  `undefined` otherwise.
+* `get ()` &rarr; returns an immutable array of immutable states, as they
+  are stored in the `FieldStates` instance.
 
 Methods `remove()` and `find()` accept either a simple object (the
 values of the fields are not used in the comparison) or a fingerprint

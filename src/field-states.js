@@ -30,9 +30,9 @@ export default class FieldStates {
   }
 
   find (fingerprint) {
-    const match = Utils.findState (this._states, fingerprint);
-    if (match) {
-      return Object.assign ({}, match);
+    const state = Utils.findState (this._states, fingerprint);
+    if (state) {
+      return state;
     }
   }
 

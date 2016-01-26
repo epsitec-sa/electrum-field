@@ -27,17 +27,22 @@ describe ('FieldStates', () => {
   });
 
   describe ('find()', () => {
-    it ('retrieves a copy of the first matching state', () => {
+    it ('retrieves an immutable state', () => {
       const state1 = {x: 1};
       const state2 = {y: 2};
       const fs = FieldStates.from (state1, state2);
       expect (fs.find ('x')).to.have.property ('x', 1);
       expect (fs.find ('y')).to.have.property ('y', 2);
       expect (fs.find ('x')).to.not.equal (state1);
-      // Make sure the returned object is a copy of the original; the state
-      // behaves as if it were immutable:
-      fs.find ('x').z = 3;
-      expect (fs.find ('x')).to.not.have.property ('z');
+      // Make sure the returned object is a immutable:
+      expect (() => fs.find ('x').z = 3).to.throw ('Can\'t add property z, object is not extensible');
+    });
+
+    it ('returns undefined on mismatch', () => {
+      const state1 = {x: 1};
+      const state2 = {y: 2};
+      const fs = FieldStates.from (state1, state2);
+      expect (fs.find ('z')).to.be.undefined ();
     });
   });
 
