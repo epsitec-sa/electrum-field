@@ -1,6 +1,6 @@
 'use strict';
 
-import shallowEqual from 'fbjs/lib/shallowEqual';
+import {shallowEqual} from 'electrum-utils';
 
 /******************************************************************************/
 
