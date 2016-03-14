@@ -24,6 +24,17 @@ describe ('FieldStates', () => {
       state1.x = 'x';
       expect (fs.get ()).to.deep.equal ([{x: 1}, {y: 2}]);
     });
+
+    it ('accepts array of field states', () => {
+      const state1 = {x: 1};
+      const state2 = {y: 2};
+      const states = [state1, state2];
+      const fs = FieldStates.from (states);
+      expect (fs.get ()).to.deep.equal ([{x: 1}, {y: 2}]);
+      // Mutate original state: this should not affect FieldStates
+      state1.x = 'x';
+      expect (fs.get ()).to.deep.equal ([{x: 1}, {y: 2}]);
+    });
   });
 
   describe ('find()', () => {

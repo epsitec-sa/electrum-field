@@ -63,7 +63,11 @@ export default class FieldStates {
   }
 
   static from (...states) {
-    return new FieldStates (secretKey, clone (states));
+    if (states.length === 1 && Array.isArray (states[0])) {
+      return new FieldStates (secretKey, clone (states[0]));
+    } else {
+      return new FieldStates (secretKey, clone (states));
+    }
   }
 
   static create () {
