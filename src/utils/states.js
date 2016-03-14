@@ -16,7 +16,7 @@ export function fingerprint (state) {
 
 export function findState (states, matchState) {
   if (states && matchState.length > 0) {
-    for (const state of states) {
+    for (let state of states) {
       const what = fingerprint (state);
       if (what === matchState) {
         return state;
