@@ -8,7 +8,7 @@ import {
   removeState,
   replaceState,
   replaceStates
-} from '../../utils/states.js';
+} from '../src/utils/states.js';
 
 /******************************************************************************/
 

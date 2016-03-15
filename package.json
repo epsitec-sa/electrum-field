@@ -1,12 +1,15 @@
 {
   "name": "electrum-field",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Electrum Field handles state associated with form fields.",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "babel -d lib/ src/",
+    "babel": "babel --quiet --out-dir lib src && babel --quiet --out-dir lib.test src.test",
+    "clean": "rimraf ./lib && rimraf ./lib.test",
+    "compile": "npm run clean && require-self && npm run babel",
+    "mocha": "mocha lib.test/**/*.js",
     "prepublish": "npm run compile",
-    "test": "mocha src/test/**/*.js"
+    "test": "npm run compile && npm run mocha"
   },
   "repository": {
     "type": "git",
@@ -25,13 +28,10 @@
     "electrum-utils": "^1.3.0"
   },
   "devDependencies": {
-    "babel-env": "^1.0.0",
-    "chai": "^3.4.1",
-    "jsdom": "^7.2.2",
-    "mai-chai": "^1.1.2",
-    "mocha": "^2.3.4",
-    "path": "^0.12.7",
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "babel-env": "^1.1.0",
+    "mai-chai": "^2.4.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "require-self": "^0.1.0"
   }
 }
