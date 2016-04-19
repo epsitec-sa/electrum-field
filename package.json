@@ -1,6 +1,6 @@
 {
   "name": "electrum-field",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Electrum Field handles state associated with form fields.",
   "main": "lib/index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/epsitec-sa/electrum-field#readme",
   "dependencies": {
-    "electrum-utils": "^1.5.1"
+    "electrum-utils": "^1.6.0"
   },
   "devDependencies": {
     "babel-env": "^1.2.2",
