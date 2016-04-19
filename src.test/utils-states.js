@@ -12,7 +12,7 @@ import {
 
 /******************************************************************************/
 
-describe ('FieldState', () => {
+describe ('FieldStates', () => {
   describe ('utils/states', () => {
     describe ('fingerprint()', () => {
       it ('produces sorted fingerprint', () => {
