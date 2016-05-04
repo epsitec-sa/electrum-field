@@ -5,7 +5,9 @@ import * as Utils from './utils/states.js';
 /******************************************************************************/
 
 function clone (array) {
-  return array.map (x => Object.assign ({}, x));
+  return array
+    .filter (x => (x !== undefined))
+    .map (x => Object.assign ({}, x));
 }
 
 function freeze (array) {

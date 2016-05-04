@@ -35,6 +35,13 @@ describe ('FieldStates', () => {
       state1.x = 'x';
       expect (fs.get ()).to.deep.equal ([{x: 1}, {y: 2}]);
     });
+
+    it ('accepts undefined input', () => {
+      const state1 = {x: 1};
+      const state2 = {y: 2};
+      const fs = FieldStates.from (undefined);
+      expect (fs.get ()).to.deep.equal ([]);
+    });
   });
 
   describe ('find()', () => {
