@@ -1,6 +1,6 @@
 {
   "name": "electrum-field",
-  "version": "1.6.4",
+  "version": "1.7.0",
   "description": "Electrum Field handles state associated with form fields.",
   "main": "lib/index.js",
   "scripts": {
@@ -28,7 +28,8 @@
     "electrum-utils": "^1.6.2"
   },
   "devDependencies": {
-    "babel-env": "^1.6.0",
+    "babel-env": "^2.3.1",
+    "generic-js-env": "^2.2.0",
     "mai-chai": "^3.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
