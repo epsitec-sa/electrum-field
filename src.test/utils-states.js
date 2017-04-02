@@ -1,4 +1,4 @@
-'use strict';
+/* global describe it */
 
 import {expect} from 'mai-chai';
 
@@ -66,24 +66,24 @@ describe ('FieldStates', () => {
         const state1 = {id: 1, x: 'X'};
         let   states;
         const result = replaceState (states, state1);
-        expect (result).to.deep.equal ([state1]);
+        expect (result).to.deep.equal ([ state1 ]);
       });
 
       it ('inserts missing state', () => {
         const state1 = {id: 1, x: 'X'};
         const states = [];
         const result = replaceState (states, state1);
-        expect (result).to.deep.equal ([state1]);
+        expect (result).to.deep.equal ([ state1 ]);
         expect (states).to.deep.equal ([]);
       });
 
       it ('inserts missing state', () => {
         const state1 = {id: 1, x: 'X'};
         const state2 = {id: 2, y: 'Y'};
-        const states = [state2];
+        const states = [ state2 ];
         const result = replaceState (states, state1);
         expect (result).to.deep.equal ([state2, state1]);
-        expect (states).to.deep.equal ([state2]);
+        expect (states).to.deep.equal ([ state2 ]);
       });
 
       it ('clones inserted state', () => {
@@ -100,21 +100,21 @@ describe ('FieldStates', () => {
 
       it ('does not alter equivalent state', () => {
         const state1 = {id: 1, x: 'X'};
-        const states = [state1];
+        const states = [ state1 ];
         const result = replaceState (states, {id: 1, x: 'X'});
         expect (result[0]).to.equal (state1);
       });
 
       it ('updates matching state', () => {
         const state1 = {id: 1, x: 'X'};
-        const states = [state1];
+        const states = [ state1 ];
         const result = replaceState (states, {id: 2, x: '*'});
         expect (result[0]).to.deep.equal ({id: 2, x: '*'});
       });
 
       it ('does nothing if state is undefined', () => {
         const state1 = {id: 1, x: 'X'};
-        const states = [state1];
+        const states = [ state1 ];
         expect (replaceState (states)).to.equal (states);
         expect (replaceState (states, {})).to.equal (states);
       });

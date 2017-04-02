@@ -1,4 +1,4 @@
-'use strict';
+/* global describe it */
 
 import {expect} from 'mai-chai';
 import {FieldStates} from 'electrum-field';
@@ -37,8 +37,6 @@ describe ('FieldStates', () => {
     });
 
     it ('accepts undefined input', () => {
-      const state1 = {x: 1};
-      const state2 = {y: 2};
       const fs = FieldStates.from (undefined);
       expect (fs.get ()).to.deep.equal ([]);
     });
@@ -73,7 +71,7 @@ describe ('FieldStates', () => {
       expect (fs2).to.not.equal (fs1);
       expect (fs3).to.equal (fs2);
       expect (fs4).to.not.equal (fs3);
-      expect (fs4.get ()).to.deep.equal ([{x: 'X'}]);
+      expect (fs4.get ()).to.deep.equal ([ {x: 'X'} ]);
       expect (fs4.find ('x')).has.property ('x', 'X');
     });
     it ('adds multiple states in one call', () => {
@@ -97,7 +95,7 @@ describe ('FieldStates', () => {
       expect (fs3).to.not.equal (fs2);
       expect (fs4).to.equal (fs3);
       expect (fs5).to.not.equal (fs4);
-      expect (fs5.get ()).to.deep.equal ([{a: 'a'}]);
+      expect (fs5.get ()).to.deep.equal ([ {a: 'a'} ]);
     });
 
     it ('removes state based on fingerprint', () => {
@@ -109,7 +107,7 @@ describe ('FieldStates', () => {
       expect (fs3).to.not.equal (fs2);
       expect (fs4).to.equal (fs3);
       expect (fs5).to.not.equal (fs4);
-      expect (fs5.get ()).to.deep.equal ([{a: 'a'}]);
+      expect (fs5.get ()).to.deep.equal ([ {a: 'a'} ]);
     });
   });
 
